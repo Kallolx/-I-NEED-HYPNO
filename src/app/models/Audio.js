@@ -1,13 +1,39 @@
-
 // src/models/Audio.js
-const audioSchema = new mongoose.Schema({
-    title: { type: String, required: true },
-    description: String,
-    category: { type: String, required: true },
-    bundle: { type: String, required: true },
-    audioUrl: { type: String, required: true },
-    duration: Number,
-    order: Number
-  }, { timestamps: true });
-  
-  export default mongoose.models.Audio || mongoose.model('Audio', audioSchema);
+import mongoose from 'mongoose'
+
+const AudioSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true
+  },
+  duration: {
+    type: String,
+    required: true
+  },
+  audioUrl: {
+    type: String,
+    required: true
+  },
+  thumbnail: {
+    type: String,
+    default: ''
+  },
+  isSubscriptionRequired: {
+    type: Boolean,
+    default: true
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+})
+
+export default mongoose.models.Audio || mongoose.model('Audio', AudioSchema)
